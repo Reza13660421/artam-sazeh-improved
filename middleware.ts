@@ -6,7 +6,8 @@ const PUBLIC_PATHS = ['/api/auth/login', '/api/auth/logout', '/api/consultations
 const ADMIN_PATHS = ['/api/data', '/admin', '/api/auth/me'];
 
 export async function middleware(request: NextRequest) {
-    const { pathname, method } = request.nextUrl;
+   const { pathname } = request.nextUrl;
+const method = request.method;
 
     // مسیرهای عمومی بدون احراز هویت
     if (PUBLIC_PATHS.some(p => pathname.startsWith(p))) {
