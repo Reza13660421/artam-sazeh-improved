@@ -1,0 +1,99 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Admin {
+  id          Int      @id @default(autoincrement())
+  fullName    String
+  username    String   @unique
+  password    String
+  role        String   @default("content")
+  phone       String?
+  permissions String   @default("[]")
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Slide {
+  id        Int      @id @default(autoincrement())
+  title     String
+  kicker    String?
+  desc      String?
+  manager   String?
+  btn1Text  String?
+  btn1Link  String?
+  btn2Text  String?
+  btn2Link  String?
+  image     String?
+  order     Int      @default(0)
+  active    Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Project {
+  id          Int      @id @default(autoincrement())
+  name        String
+  location    String
+  status      String   @default("در حال ساخت")
+  progress    Int      @default(0)
+  image       String?
+  description String?
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+}
+
+model Service {
+  id        Int      @id @default(autoincrement())
+  title     String
+  icon      String
+  desc      String
+  order     Int      @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Testimonial {
+  id        Int      @id @default(autoincrement())
+  name      String
+  title     String
+  text      String
+  status    String   @default("pending")
+  rating    Int      @default(5)
+  date      String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Blog {
+  id        Int      @id @default(autoincrement())
+  title     String
+  category  String
+  date      String
+  content   String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Consultation {
+  id        Int      @id @default(autoincrement())
+  name      String
+  phone     String
+  email     String?
+  subject   String?
+  message   String
+  date      String
+  status    String   @default("new")
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Setting {
+  key   String @id
+  value String
+}

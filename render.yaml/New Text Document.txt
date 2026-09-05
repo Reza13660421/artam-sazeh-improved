@@ -1,0 +1,13 @@
+services:
+  - type: web
+    name: artam-sazeh-improved
+    env: node
+    buildCommand: npm install && npx prisma generate && npm run build
+    startCommand: npm run start
+    envVars:
+      - key: DATABASE_URL
+        value: file:./dev.db
+      - key: JWT_SECRET
+        value: your-super-secret-jwt-key-change-this
+      - key: NEXT_PUBLIC_BASE_URL
+        value: https://artam-sazeh-improved.onrender.com

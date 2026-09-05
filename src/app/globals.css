@@ -1,0 +1,72 @@
+﻿@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    :root {
+        --background: 0 0% 98%;
+        --foreground: 0 0% 10%;
+        --card: 0 0% 100%;
+        --border: 0 0% 85%;
+        --input: 0 0% 95%;
+        --muted: 0 0% 90%;
+        --muted-foreground: 0 0% 40%;
+        --radius: 0.75rem;
+    }
+
+    .dark {
+        --background: 0 0% 7%;
+        --foreground: 0 0% 95%;
+        --card: 0 0% 10%;
+        --border: 0 0% 15%;
+        --input: 0 0% 12%;
+        --muted: 0 0% 15%;
+        --muted-foreground: 0 0% 60%;
+    }
+
+    * {
+        border-color: hsl(var(--border));
+    }
+
+    body {
+        @apply bg-background text-foreground font-vazir antialiased;
+        direction: rtl;
+    }
+
+    ::-webkit-scrollbar {
+        width: 6px;
+        height: 6px;
+    }
+
+    ::-webkit-scrollbar-track {
+        background: transparent;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #d4af37;
+        border-radius: 10px;
+    }
+
+        ::-webkit-scrollbar-thumb:hover {
+            background: #b8962a;
+        }
+
+    html {
+        scroll-behavior: smooth;
+    }
+}
+
+/* کلاس‌های سفارشی برای فرم‌ها و مودال‌ها */
+@layer components {
+    .input-field {
+        @apply w-full bg-background/60 border border-border rounded-xl px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground/50 focus:border-gold focus:ring-1 focus:ring-gold/20 outline-none transition-all duration-300 hover:border-gold/30;
+    }
+
+    .input-label {
+        @apply block text-xs font-semibold text-muted-foreground mb-1.5;
+    }
+
+    .textarea-field {
+        @apply input-field resize-y min-h-[100px];
+    }
+}
